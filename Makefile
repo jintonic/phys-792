@@ -3,15 +3,12 @@
 CXXFLAGS = -Wall -O2
 CXXFLAGS+= $(shell root-config --cflags)
 
-LIBS = $(shell root-config --libs)
+LDLIBS = $(shell root-config --libs)
 
 SRC = $(wildcard *.cc)
-EXE = $(SRC:.cc=.exe)
+EXE = $(SRC:.cc=)
 
 all: $(EXE)
-
-%.exe: %.cc
-	$(CXX) $(CXXFLAGS) $(LIBS) $< -o $@
 
 info:
 	@echo $(SRC)
@@ -19,7 +16,9 @@ info:
 	@echo $(LIBS)
 	@echo $(CXXFLAGS)
 clean:
-	$(RM) *.exe
+	$(RM) $(EXE)
 
 install:
-	mv *.exe ~/bin
+	install $(EXE) ~/bin
+	@echo Please add $(shell root-config --libdir)
+	@echo to your LD_LIBRARY_PATH before you run any executable
