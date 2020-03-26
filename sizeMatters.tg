@@ -1,0 +1,12 @@
+// default unit for length is mm
+:volu world BOX 500 500 500 G4_Galactic
+:vis world OFF
+
+:volu det1(S) BOX 240 240 240 G4_Ge
+:volu det2(S) BOX  10  10  10 G4_Ge
+:color det1(S) 0.9 0.9 0.1
+:color det2(S) 0.3 0.2 0.8
+
+:rotm r000 0 0 0
+:place det1(S) 1 world r000 250 0 0
+:place det2(S) 2 world r000 -12 0 0
