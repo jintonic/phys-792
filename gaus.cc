@@ -10,6 +10,6 @@ int main ()
    for (int i=0; i<160; i++) histogram.Fill(generator.Gaus(170,20));
 
    TCanvas can;
-   histogram.Draw();
+   histogram.Fit("gaus");
    can.Print("height.jpg");
 }
